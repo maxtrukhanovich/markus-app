@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Markus</title>
+  <meta name="description" content="Help with Markus, the Markdown reader for Mac, and how to get in touch.">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="../"><img src="../images/icon.png" alt="">Markus</a>
+      <nav><a href="./" aria-current="page">Support</a><a href="../privacy/">Privacy</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc">
+      <h1>Support</h1>
+      <p class="updated">Found a bug, missing a feature, or stuck? <a href="https://github.com/maxtrukhanovich/markus-app/issues/new">Open an issue on GitHub</a> — every report is read. Please include your macOS version and, if you can, the Markdown file that shows the problem.</p>
+
+      <p>The full guide is inside the app: <strong>Help → Markus Help</strong>.</p>
+
+      <h2>What does Markus need?</h2>
+      <p>macOS 26 Tahoe or later on a Mac with Apple silicon. The Apple Intelligence features — summaries, Ask, Explain and Diagram Selection — also need Apple Intelligence turned on in System Settings; on other Macs they stay hidden and everything else works.</p>
+
+      <h2>How do I open my documents?</h2>
+      <p>File → Open Vault… (⇧⌘O), the <strong>+</strong> button in the sidebar, or drag a folder onto the window. Markus keeps the folder in the sidebar as a <em>vault</em> and opens it again next time. Single files open with File → Open File… (⌘O) or by dragging them onto the window.</p>
+
+      <h2>Can I edit documents in Markus?</h2>
+      <p>No — Markus is a reader, made to sit next to the editor you already use. Right-click a file and choose <strong>Open in</strong> to send it to your editor; pick the editor in Settings → General. When you save, Markus updates the page right away.</p>
+
+      <h2>The Quick Look preview isn't from Markus</h2>
+      <p>Markus needs to be in the Applications folder. If another app's Markdown preview shows up instead, turn the others off in <strong>System Settings → General → Login Items &amp; Extensions → Quick Look</strong>.</p>
+
+      <h2>A GitHub repository says the request limit is reached</h2>
+      <p>GitHub allows 60 requests an hour without an account, and opening a repository takes a few. A read-only token in <strong>Settings → Accounts</strong> raises the limit and opens private repositories. The token stays in your Mac's Keychain.</p>
+
+      <h2>A diagram or formula doesn't render</h2>
+      <p>Mermaid diagrams need a <code>```mermaid</code> fence; math uses <code>$…$</code>, <code>$$…$$</code> or a <code>```math</code> fence. If it still fails, the error is shown in place of the diagram — please send it with the source in an issue.</p>
+
+      <h2>Privacy</h2>
+      <p>Markus collects no data. See the <a href="../privacy/">Privacy Policy</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>© 2026 Maksim Trukhanovich</span>
+      <span><a href="./">Support</a> · <a href="../privacy/">Privacy Policy</a></span>
+    </div>
+  </footer>
+</body>
+</html>
