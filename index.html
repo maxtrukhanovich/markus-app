@@ -1,76 +1,322 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="landing" data-pin="(min-width: 821px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Markus — Markdown Reader for Mac</title>
   <meta name="description" content="Markus is a Markdown reader for the Mac: highlighted code, Mermaid diagrams, math, Quick Look and on-device summaries from Apple Intelligence.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Markus — Markdown Reader for Mac">
+  <meta property="og:description" content="Your Markdown, beautifully read. Highlighted code, Mermaid diagrams, math, Quick Look and on-device summaries from Apple Intelligence.">
+  <meta property="og:url" content="https://maxtrukhanovich.github.io/markus-app/">
+  <meta property="og:image" content="https://maxtrukhanovich.github.io/markus-app/images/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/icon.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing.css">
+  <script>
+    (function (root) {
+      root.classList.add('js');
+      if (matchMedia('(prefers-reduced-motion: no-preference)').matches) root.classList.add('motion');
+      if (matchMedia(root.dataset.pin).matches) root.classList.add('pin');
+    })(document.documentElement);
+  </script>
+  <script src="landing.js" defer></script>
 </head>
 <body>
   <header class="site">
     <div class="wrap">
       <a class="brand" href="./"><img src="images/icon.png" alt="">Markus</a>
-      <nav><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
+      <nav><a href="support/">Support</a><a href="privacy/">Privacy</a><a class="buy" href="https://apps.apple.com/app/id6826914669?mt=12">Buy</a></nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <img class="icon" src="images/icon.png" alt="Markus app icon">
-      <h1>Your Markdown,<br>beautifully read.</h1>
-      <p class="lede">Point Markus at a folder — a project's docs, your notes, a cloned repository — and read every file the way it was meant to look.</p>
-      <div class="cta">
-        <a class="badge" href="https://apps.apple.com/app/id6826914669?mt=12">Download on the Mac App Store</a>
-        <span class="requirements">macOS 26 Tahoe · Apple silicon</span>
+  <section class="hero-scene">
+    <div class="hero-sticky">
+      <div class="hero-copy">
+        <div class="app-icon"><img src="images/icon.png" alt="Markus app icon" width="512" height="512"></div>
+        <h1><span>Your Markdown,</span> <span class="warm">beautifully read.</span></h1>
+        <p class="lede">Point Markus at a folder — a project's docs, your notes, a cloned repository — and read every file the way it was meant to look.</p>
+        <div class="cta">
+          <a class="pill" href="https://apps.apple.com/app/id6826914669?mt=12">Download on the Mac App Store</a>
+          <span class="fine">macOS 26 Tahoe · Apple silicon</span>
+        </div>
+      </div>
+      <div class="hero-window">
+        <div class="window">
+          <img src="images/shots/readme-light.jpg" width="2400" height="1500" fetchpriority="high" alt="Markus showing a project's README with a tip and a highlighted code block">
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="shots">
-    <img src="images/screenshots/01-read.jpg" alt="Markus showing a project's README with a tip and a highlighted code block">
-  </div>
+  <section class="statement">
+    <p data-words>Markus is a reader, not an editor. It sits next to the editor you already use, and the moment you save, the page updates. Diagrams draw themselves. Code lights up. Math sets like a textbook.</p>
+  </section>
 
-  <main class="wrap">
-    <section class="features">
-      <div class="grid">
-        <div class="card">
-          <h3>Built for documentation</h3>
-          <p>Code highlighted in dozens of languages, with file names and copy buttons. GitHub-style alerts, footnotes, task lists, tables and front matter.</p>
-        </div>
-        <div class="card">
-          <h3>Diagrams and math</h3>
-          <p>Mermaid diagrams are drawn right in the page and save as PNG or SVG. Math is typeset with KaTeX. All offline.</p>
-        </div>
-        <div class="card">
-          <h3>Vaults and tabs</h3>
-          <p>Keep the folders you read in the sidebar, each with its own tabs. Quick Open, an outline of every heading, wiki-links with previews and backlinks.</p>
-        </div>
-        <div class="card">
-          <h3>Always current</h3>
-          <p>Files update the moment you save them in your editor. In a git repository, Markus shows what changed and which branch you're on.</p>
-        </div>
-        <div class="card">
-          <h3>Apple Intelligence, on your Mac</h3>
-          <p>A short summary of every document, answers about what you're reading, and explanations of a selection — produced on device.</p>
-        </div>
-        <div class="card">
-          <h3>Quick Look and GitHub</h3>
-          <p>Press Space on a Markdown file in Finder for a full preview, diagrams included. Read a GitHub repository's docs and issues without cloning it.</p>
+  <section class="compare-section">
+    <div class="section-head" data-reveal>
+      <h2>Plain text in.<br>Finished page out.</h2>
+      <p>Markdown is a great way to write and a poor way to read. <strong>Drag across this file</strong> to see what Markus makes of it.</p>
+    </div>
+    <figure class="compare window" data-compare data-reveal>
+      <img src="images/shots/architecture-source.jpg" width="2400" height="1500" loading="lazy" alt="The Markdown source of a document, with its diagram written as a Mermaid code block">
+      <img class="compare-page" src="images/shots/architecture-dark.jpg" width="2400" height="1500" loading="lazy" alt="The same document in Markus, with the Mermaid code drawn as a diagram">
+      <span class="chip chip-source" aria-hidden="true">Markdown</span>
+      <span class="chip chip-page" aria-hidden="true">Markus</span>
+      <input class="compare-input" type="range" min="35" max="100" value="68" aria-label="Compare the Markdown source with the page Markus draws">
+      <div class="compare-handle" aria-hidden="true"><span></span></div>
+    </figure>
+  </section>
+
+  <section class="tour-scene">
+    <div class="tour-sticky">
+      <ol class="chapters">
+        <li class="chapter is-active">
+          <h3><button type="button">Diagrams and callouts, right in the page.</button></h3>
+          <div class="chapter-body"><p>Mermaid diagrams are drawn in place and save as PNG or SVG. GitHub alerts, footnotes, task lists and tables look the way they should. <strong>All of it works offline.</strong></p></div>
+          <div class="chapter-shot window"><img src="images/shots/diagrams.jpg" width="2400" height="1500" loading="lazy" alt="A sequence diagram and a note drawn in a document, in dark mode"></div>
+        </li>
+        <li class="chapter">
+          <h3><button type="button">Code that reads like your editor.</button></h3>
+          <div class="chapter-body"><p>Highlighting for dozens of languages, with file names, and copy and open-in-editor buttons.</p></div>
+          <div class="chapter-shot window"><img src="images/shots/code.jpg" width="2400" height="1500" loading="lazy" alt="Swift and shell code blocks with file names"></div>
+        </li>
+        <li class="chapter">
+          <h3><button type="button">Apple Intelligence, on your Mac.</button></h3>
+          <div class="chapter-body"><p>A short summary of every document, answers about what you're reading, and explanations of a selection. <strong>Nothing you read leaves your Mac.</strong></p></div>
+          <div class="chapter-shot window"><img src="images/shots/intelligence.jpg" width="2400" height="1500" loading="lazy" alt="The Inspector with an Apple Intelligence summary, outline and readability"></div>
+        </li>
+        <li class="chapter">
+          <h3><button type="button">Made for long reads.</button></h3>
+          <div class="chapter-body"><p>Distraction-free mode, a comfortable reading width and beautifully typeset math.</p></div>
+          <div class="chapter-shot window"><img src="images/shots/focus.jpg" width="2400" height="1500" loading="lazy" alt="Distraction-free mode with typeset math"></div>
+        </li>
+      </ol>
+      <div class="tour-stage window" aria-hidden="true">
+        <img class="is-active" src="images/shots/diagrams.jpg" width="2400" height="1500" loading="lazy" alt="">
+        <img src="images/shots/code.jpg" width="2400" height="1500" loading="lazy" alt="">
+        <img src="images/shots/intelligence.jpg" width="2400" height="1500" loading="lazy" alt="">
+        <img src="images/shots/focus.jpg" width="2400" height="1500" loading="lazy" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="quicklook" data-quicklook>
+    <div class="section-head" data-reveal>
+      <h2>Press Space in Finder.</h2>
+      <p>A full Quick Look preview of any Markdown file, <strong>diagrams and math included.</strong></p>
+    </div>
+    <div class="ql-stage" data-reveal>
+      <div class="ql-finder">
+        <div class="ql-bar" aria-hidden="true"><i></i><i></i><i></i><span>Orbit</span></div>
+        <fieldset class="ql-files">
+          <legend>Files in the Orbit folder</legend>
+          <label class="ql-file"><input type="radio" name="ql-file" data-shot="images/shots/ql-0007.jpg" data-alt="A Quick Look preview of a decision record with a status badge and code"><b><i>MD</i></b><span>0007 Use CRDTs for text.md</span></label>
+          <label class="ql-file"><input type="radio" name="ql-file" checked data-shot="images/shots/ql-architecture.jpg" data-alt="A Quick Look preview of a document with a Mermaid diagram"><b><i>MD</i></b><span>Architecture.md</span></label>
+          <label class="ql-file"><input type="radio" name="ql-file" data-shot="images/shots/ql-changelog.jpg" data-alt="A Quick Look preview of a changelog"><b><i>MD</i></b><span>CHANGELOG.md</span></label>
+          <label class="ql-file"><input type="radio" name="ql-file" data-shot="images/shots/ql-getting-started.jpg" data-alt="A Quick Look preview of a guide with highlighted code"><b><i>MD</i></b><span>Getting started.md</span></label>
+          <label class="ql-file"><input type="radio" name="ql-file" data-shot="images/shots/ql-merging.jpg" data-alt="A Quick Look preview of a document with typeset math"><b><i>MD</i></b><span>Merging.md</span></label>
+          <label class="ql-file"><input type="radio" name="ql-file" data-shot="images/shots/ql-readme.jpg" data-alt="A Quick Look preview of a project's README"><b><i>MD</i></b><span>README.md</span></label>
+        </fieldset>
+      </div>
+      <img class="ql-preview" src="images/shots/ql-architecture.jpg" width="1620" height="1286" loading="lazy" alt="A Quick Look preview of a document with a Mermaid diagram">
+    </div>
+    <div class="ql-key" data-reveal>
+      <button class="keycap" type="button" aria-pressed="false" aria-label="Show the Quick Look preview">space</button>
+      <p class="fine">Pick a file, then press Space.</p>
+    </div>
+  </section>
+
+  <section class="daynight">
+    <div class="section-head" data-reveal>
+      <h2>Day or night.</h2>
+      <p>Light and dark themes, your accent color, adjustable text size and a comfortable reading width.</p>
+      <fieldset class="segmented">
+        <legend>Appearance</legend>
+        <label><input type="radio" name="appearance" value="light" checked><span>Light</span></label>
+        <label><input type="radio" name="appearance" value="dark"><span>Dark</span></label>
+      </fieldset>
+    </div>
+    <div class="daynight-window window" data-reveal>
+      <img src="images/shots/architecture-light.jpg" width="2400" height="1500" loading="lazy" alt="A document with a diagram in the light theme">
+      <img class="daynight-dark" src="images/shots/architecture-dark.jpg" width="2400" height="1500" loading="lazy" alt="The same document in the dark theme">
+    </div>
+  </section>
+
+  <svg class="icon-set" aria-hidden="true" width="0" height="0">
+    <defs>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h4.2c.7 0 1.3.3 1.8.8L13 6.3h5.5A2.5 2.5 0 0 1 21 8.8v8.7a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19a1 1 0 0 1 1 1v14.5a1 1 0 0 1-1 1H7.5a1 1 0 0 0 0 2H19a1 1 0 1 1 0 2H7.5A2.5 2.5 0 0 1 5 20z"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13A2.5 2.5 0 0 1 4.5 3zm1.7 5.2 3.8 3.3-3.8 3.3 1.3 1.5 5.5-4.8-5.5-4.8zM12 15v2h6v-2z"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 2h6v2h-1v5.2l5.4 9.3a2.3 2.3 0 0 1-2 3.5H6.6a2.3 2.3 0 0 1-2-3.5L10 9.2V4H9z"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9 3h6a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v3H2V8a2 2 0 0 1 2-2h3V5a2 2 0 0 1 2-2zm0 3h6V5H9zM2 13h8v2h4v-2h8v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4.2 12.6c-.7.5-1.2 1.2-1.2 2v.4H9v-.4c0-.8-.5-1.5-1.2-2A7 7 0 0 1 12 2zM9 18.5h6V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.2-8.5-11.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8.5 2.6C20.5 15.8 12 21 12 21z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5-4.8-4.6 6.6-.9z"/></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 3.5 1.5 9 12 14.5 22.5 9zM5.5 13.2V17c0 1.7 2.9 3.5 6.5 3.5s6.5-1.8 6.5-3.5v-3.8L12 16.6z"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20.5 3C12 3 4.5 6 4.5 14c0 1.7.5 3.2 1.3 4.5l-2.3 2.3 1.4 1.4 2.3-2.3c1.3.8 2.8 1.1 4.3 1.1 8 0 9-8.5 9-18z"/></symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5zM3 8.7l8 4.4V22l-8-4.5zM21 8.7V17.5L13 22v-8.9z"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 13h4v8H4zM10 3h4v18h-4zM16 9h4v12h-4z"/></symbol>
+    </defs>
+  </svg>
+
+  <section class="prism-scene" data-prism>
+    <div class="prism" role="img" aria-label="A glass tile with a vault icon, refracting light">
+      <div class="prism-bloom"></div>
+      <div class="prism-glass"><div class="prism-caustic"></div></div>
+      <div class="prism-glyph"><i class="prism-r"></i><i class="prism-g"></i><i class="prism-b"></i><i class="prism-tint"></i></div>
+    </div>
+    <div class="prism-copy">
+      <h2>Make every vault <span class="spectrum">yours.</span></h2>
+      <p>Give each folder its own name, icon and color, so you know where you are at a glance.</p>
+    </div>
+  </section>
+
+  <section class="vault-demo" data-vaults>
+    <div class="vmock window" data-reveal>
+      <div class="vmock-inner">
+        <aside class="vm-side">
+          <div class="vm-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="vm-label">Vaults</p>
+          <div class="vm-vaults" role="group" aria-label="Choose a vault to customize"></div>
+        </aside>
+        <div class="vm-main">
+          <div class="vm-top">
+            <div class="vm-sweep" aria-hidden="true"></div>
+            <div class="vm-toolbar">
+              <div class="vm-pill"><strong class="vm-doc-title"></strong><span class="vm-crumb"></span></div>
+            </div>
+            <div class="vm-tabs" aria-hidden="true"><span class="is-active vm-tab-title"></span><span>Getting started</span><span>Merging</span></div>
+          </div>
+          <article class="vm-page">
+            <h4 class="vm-doc-title"></h4>
+            <p class="vm-doc-body"></p>
+            <h5 class="vm-doc-next"></h5>
+            <ul class="vm-doc-list"></ul>
+            <div class="vm-note"><b>Tip</b><p>New here? Start with <a class="vm-link">Getting started</a>, then read how <a class="vm-link">sync works</a>.</p></div>
+          </article>
+          <div class="vm-status"><span class="vm-file"></span><span>128 words</span><span>1 min read</span></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="gallery">
-      <img src="images/screenshots/02-diagrams.jpg" alt="A Mermaid diagram and a note drawn in a document, in dark mode" loading="lazy">
-      <img src="images/screenshots/03-intelligence.jpg" alt="The Inspector with an Apple Intelligence summary, outline and readability" loading="lazy">
-      <img src="images/screenshots/04-code.jpg" alt="Swift and shell code blocks with file names" loading="lazy">
-      <img src="images/screenshots/05-quicklook.jpg" alt="A Quick Look preview of a Markdown file with a diagram" loading="lazy">
-      <img src="images/screenshots/06-focus.jpg" alt="Distraction-free mode with typeset math" loading="lazy">
-    </section>
-  </main>
+    <form class="vpanel" data-reveal onsubmit="return false">
+      <div class="vpanel-head">
+        <h3>Customize Vault</h3>
+        <p class="vpanel-path"></p>
+      </div>
+      <div class="vpanel-row">
+        <div class="vchip">
+          <div class="prism-glyph"><i class="prism-r"></i><i class="prism-g"></i><i class="prism-b"></i><i class="prism-tint"></i></div>
+        </div>
+        <div class="vpanel-fields">
+          <label class="vfield"><span>Name</span><input type="text" name="vault-name" maxlength="18" autocomplete="off" spellcheck="false"></label>
+          <fieldset class="vfield">
+            <legend>Color</legend>
+            <div class="vswatches">
+              <label class="vswatch vswatch-none" title="No color"><input type="radio" name="vault-color" value=""><i></i></label>
+              <label class="vswatch" title="Red" style="--c:#ff453b"><input type="radio" name="vault-color" value="#ff453b"><i></i></label>
+              <label class="vswatch" title="Orange" style="--c:#ff9400"><input type="radio" name="vault-color" value="#ff9400"><i></i></label>
+              <label class="vswatch" title="Yellow" style="--c:#ffcc00"><input type="radio" name="vault-color" value="#ffcc00"><i></i></label>
+              <label class="vswatch" title="Green" style="--c:#4dd159"><input type="radio" name="vault-color" value="#4dd159"><i></i></label>
+              <label class="vswatch" title="Blue" style="--c:#007aff"><input type="radio" name="vault-color" value="#007aff"><i></i></label>
+              <label class="vswatch" title="Purple" style="--c:#b052de"><input type="radio" name="vault-color" value="#b052de"><i></i></label>
+              <label class="vswatch" title="Gray" style="--c:#8f8f94"><input type="radio" name="vault-color" value="#8f8f94"><i></i></label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <fieldset class="vfield">
+        <legend>Icon</legend>
+        <div class="vicons"></div>
+      </fieldset>
+      <hr>
+      <fieldset class="vfield">
+        <legend>Accent, for the whole app</legend>
+        <div class="vswatches">
+          <label class="vswatch" title="Blue" style="--c:#007aff"><input type="radio" name="app-accent" value="#007aff"><i></i></label>
+          <label class="vswatch" title="Purple" style="--c:#b052de"><input type="radio" name="app-accent" value="#b052de"><i></i></label>
+          <label class="vswatch" title="Pink" style="--c:#ff2e54"><input type="radio" name="app-accent" value="#ff2e54"><i></i></label>
+          <label class="vswatch" title="Red" style="--c:#ff3b30"><input type="radio" name="app-accent" value="#ff3b30"><i></i></label>
+          <label class="vswatch" title="Orange" style="--c:#ff9400"><input type="radio" name="app-accent" value="#ff9400" checked><i></i></label>
+          <label class="vswatch" title="Yellow" style="--c:#ffcc00"><input type="radio" name="app-accent" value="#ffcc00"><i></i></label>
+          <label class="vswatch" title="Green" style="--c:#33c759"><input type="radio" name="app-accent" value="#33c759"><i></i></label>
+          <label class="vswatch" title="Graphite" style="--c:#8f8f94"><input type="radio" name="app-accent" value="#8f8f94"><i></i></label>
+        </div>
+      </fieldset>
+      <fieldset class="vfield">
+        <legend>Appearance</legend>
+        <div class="segmented segmented-small">
+          <label><input type="radio" name="vault-appearance" value="light"><span>Light</span></label>
+          <label><input type="radio" name="vault-appearance" value="dark" checked><span>Dark</span></label>
+        </div>
+      </fieldset>
+    </form>
+
+    <ul class="vfacts">
+      <li data-reveal><strong>432 symbols.</strong> Search them, in outline or filled.</li>
+      <li data-reveal><strong>Seven colors.</strong> They tint the toolbar and sidebar icon, and mark the folder with the matching Finder tag.</li>
+      <li data-reveal><strong>Stored with the folder.</strong> Settings travel through iCloud Drive, Dropbox or git, or stay out of git with one switch.</li>
+    </ul>
+  </section>
+
+  <section class="bento-section">
+    <div class="section-head" data-reveal>
+      <h2>Everything around the page.</h2>
+    </div>
+    <div class="bento">
+      <article class="card card-vaults" data-reveal>
+        <h3>Vaults and tabs</h3>
+        <p>Keep the folders you read in the sidebar, each with its own tabs.</p>
+        <div class="card-crop" role="img" aria-label="The Markus sidebar with a vault and its folders"></div>
+      </article>
+      <article class="card" data-reveal>
+        <kbd class="glyph">⌘S</kbd>
+        <h3>Always current</h3>
+        <p>Files update the moment you save them in your editor. In a git repository, Markus shows what changed and which branch you're on.</p>
+      </article>
+      <article class="card" data-reveal>
+        <kbd class="glyph">⌘K</kbd>
+        <h3>Quick Open</h3>
+        <p>Jump to any file. Back and Forward, an outline of every heading, foldable sections.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="wiki">See <span class="wikilink" tabindex="0">Merging<span class="wiki-preview" role="tooltip"><b>Merging.md</b>Two devices edit the same record while offline. Orbit keeps both.</span></span> for how sync works.</p>
+        <h3>Wiki-links</h3>
+        <p>Links between notes, with previews on hover, and backlinks.</p>
+      </article>
+      <article class="card" data-reveal>
+        <span class="glyph glyph-mono">owner/repo</span>
+        <h3>GitHub, without cloning</h3>
+        <p>Read a repository's Markdown and issues right in Markus. Private repositories work with a read-only token.</p>
+      </article>
+      <article class="card card-wide" data-reveal>
+        <span class="glyph">0 bytes</span>
+        <h3>No account. No tracking.</h3>
+        <p>Markus collects no data and reads only the folders you open. Your documents stay on your Mac.</p>
+      </article>
+      <article class="card card-wide" data-reveal>
+        <ul class="tags">
+          <li>Find in page</li><li>PDF export</li><li>Printing</li><li>Task lists</li><li>Footnotes</li><li>Front matter</li><li>Foldable sections</li><li>Diagrams as images</li>
+        </ul>
+        <h3>And the small things</h3>
+        <p>The details that make a long document pleasant to live in.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="closing" data-reveal>
+    <div class="app-icon"><img src="images/icon.png" alt="" width="512" height="512" loading="lazy"></div>
+    <h2>Give your docs the page they deserve.</h2>
+    <p>One purchase. No subscription, no account.</p>
+    <div class="cta">
+      <a class="pill" href="https://apps.apple.com/app/id6826914669?mt=12">Download on the Mac App Store</a>
+      <span class="fine">macOS 26 Tahoe · Apple silicon</span>
+    </div>
+  </section>
 
   <footer class="site">
     <div class="wrap">
