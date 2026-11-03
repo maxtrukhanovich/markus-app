@@ -5,6 +5,18 @@
   --muted: #5d6472;
   --line: #e3e6eb;
   --accent: #e8590c;
+  /* Liquid Glass, measured on Markus's toolbar controls in macOS 26 */
+  --glass-sheen: linear-gradient(rgba(255, 255, 255, .09), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .05));
+  --glass: var(--glass-sheen), rgba(255, 255, 255, .12);
+  --glass-edge: 0 0 0 .5px rgba(0, 0, 0, .8), inset 0 .5px 0 rgba(255, 255, 255, .3), inset 0 1.5px 1px rgba(255, 255, 255, .1),
+    inset 0 -.5px 0 rgba(255, 255, 255, .26), inset 0 -1.5px 1px rgba(255, 255, 255, .07);
+  --glass-white: linear-gradient(rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, .65));
+  --glass-white-edge: inset 0 0 0 .5px rgba(0, 0, 0, .18), inset 0 1.5px 1px rgba(255, 255, 255, .95), inset 0 -1.5px 1px rgba(255, 255, 255, .8),
+    0 0 0 .5px rgba(255, 255, 255, .3);
+  --glass-ink: linear-gradient(rgba(255, 255, 255, .2), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .08));
+  --glass-ink-edge: inset 0 0 0 .5px rgba(0, 0, 0, .5), inset 0 .5px 0 rgba(255, 255, 255, .35), inset 0 -.5px 0 rgba(255, 255, 255, .2);
+  --glass-on-text: var(--glass-ink);
+  --glass-on-text-edge: var(--glass-ink-edge);
   color-scheme: light dark;
 }
 
@@ -16,6 +28,8 @@
     --muted: #9aa1ae;
     --line: #2a2e37;
     --accent: #ff8a3d;
+    --glass-on-text: var(--glass-white);
+    --glass-on-text-edge: var(--glass-white-edge);
   }
 }
 
@@ -47,7 +61,10 @@ header.site .brand img { width: 28px; height: 28px; }
 header.site nav { display: flex; align-items: center; }
 header.site nav a { color: var(--muted); margin-left: 22px; font-size: 14px; }
 header.site nav a:hover, header.site nav a[aria-current] { color: var(--text); text-decoration: none; }
-header.site nav a.buy { padding: 4px 14px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: 13px; font-weight: 600; }
+header.site nav a.buy {
+  padding: 4px 14px; border-radius: 999px; color: var(--bg); font-size: 13px; font-weight: 600;
+  background-color: var(--text); background-image: var(--glass-on-text); box-shadow: var(--glass-on-text-edge);
+}
 header.site nav a.buy:hover { color: var(--bg); opacity: .86; }
 
 article.doc { padding: 56px 0 40px; max-width: 760px; }

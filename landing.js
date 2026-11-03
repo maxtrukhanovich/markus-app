@@ -8,6 +8,11 @@ const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)]
 const clamp = (value, low = 0, high = 1) => Math.min(high, Math.max(low, value));
 const mix = (from, to, amount) => from + (to - from) * amount;
 const smooth = (amount) => amount * amount * (3 - 2 * amount);
+const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+const decodeImages = (element) => Promise.all($$('img', element).map((image) => {
+  image.loading = 'eager';
+  return image.decode().catch(() => {});
+}));
 
 const isPinned = () => pinQuery.matches;
 const pinProgress = (scene) => {
@@ -101,12 +106,19 @@ function wordScene() {
 function tourScene() {
   const scene = $('.tour-scene');
   const chapters = $$('.chapter', scene);
-  const frames = $$('.tour-stage img', scene);
+  const frames = $$('.tour-frame', scene);
+  const pills = frames.map((frame) => outlinePill($('.tour-pill', frame)));
   const syncButtons = () => chapters.forEach((chapter) => { $('button', chapter).disabled = !isPinned(); });
   let active = 0;
 
   syncButtons();
   pinQuery.addEventListener('change', syncButtons);
+  const preload = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting || !isPinned()) return;
+    preload.disconnect();
+    decodeImages($('.tour-stage', scene));
+  }, { rootMargin: '100% 0px' });
+  preload.observe(scene);
   chapters.forEach((chapter, index) => {
     $('button', chapter).addEventListener('click', (event) => {
       if (!isPinned()) return;
@@ -122,13 +134,45 @@ function tourScene() {
     if (!isPinned()) return;
     const position = pinProgress(scene) * chapters.length;
     const current = Math.min(chapters.length - 1, Math.floor(position));
-    chapters.forEach((chapter, index) => chapter.style.setProperty('--fill', clamp(position - index)));
+    chapters.forEach((chapter, index) => {
+      const progress = clamp(position - index);
+      chapter.style.setProperty('--fill', progress);
+      const scroll = smooth(clamp((progress - 0.12) / 0.76));
+      frames[index].style.setProperty('--scroll', scroll);
+      pills[index](scroll);
+    });
     if (current === active) return;
     chapters[active].classList.remove('is-active');
     frames[active].classList.remove('is-active');
     chapters[current].classList.add('is-active');
     frames[current].classList.add('is-active');
     active = current;
+  };
+}
+
+// Same rules as the app: updateCurrentHeading in markus-bootstrap.js, the idle shrink in OutlinePill.swift.
+function outlinePill(pill) {
+  if (!pill) return () => {};
+  const bars = $$('i', pill);
+  const tops = pill.dataset.tops.split(' ').map(Number);
+  const [start, travel, viewport, length] = pill.dataset.scroll.split(' ').map(Number);
+  let current = -1;
+  let idle;
+
+  return (scroll) => {
+    const y = start + scroll * travel;
+    const heading = y + viewport >= length - 4 ? tops.length - 1
+      : y < 8 ? 0
+      : Math.max(0, tops.findLastIndex((top) => top - y <= 100));
+    if (heading === current) return;
+    bars[current]?.classList.remove('is-current');
+    bars[heading].classList.add('is-current');
+    if (current >= 0) {
+      pill.classList.add('is-moving');
+      clearTimeout(idle);
+      idle = setTimeout(() => pill.classList.remove('is-moving'), 900);
+    }
+    current = heading;
   };
 }
 
@@ -321,13 +365,24 @@ function vaultDemo() {
 }
 
 function revealOnScroll() {
+  const decoded = new Map();
+  const prepare = new IntersectionObserver((entries) => {
+    entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+      prepare.unobserve(entry.target);
+      decoded.set(entry.target, decodeImages(entry.target));
+    });
+  }, { rootMargin: '100% 0px' });
   const observer = new IntersectionObserver((entries) => {
     entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
-      entry.target.classList.add('in');
       observer.unobserve(entry.target);
+      const images = decoded.get(entry.target) ?? decodeImages(entry.target);
+      Promise.race([images, delay(1200)]).then(() => entry.target.classList.add('in'));
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  $$('[data-reveal]').forEach((element) => observer.observe(element));
+  $$('[data-reveal]').forEach((element) => {
+    prepare.observe(element);
+    observer.observe(element);
+  });
 }
 
 function compareSlider() {
