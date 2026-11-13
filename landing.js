@@ -47,6 +47,7 @@ motionQuery.addEventListener('change', () => {
 });
 
 revealOnScroll();
+askDemo();
 compareSlider();
 quickLook();
 vaultDemo();
@@ -383,6 +384,20 @@ function revealOnScroll() {
     prepare.observe(element);
     observer.observe(element);
   });
+}
+
+function askDemo() {
+  const scene = $('.ask-scene');
+  if (!scene || !motionQuery.matches) return;
+  const frame = $('.ask-window', scene);
+  const steps = $('.ask-steps', scene);
+  const ready = decodeImages(frame);
+  const replay = (target, element, start) => new IntersectionObserver(([entry]) => {
+    if (entry.intersectionRatio >= 0.55) start().then(() => target.classList.add('play'));
+    else if (!entry.isIntersecting) target.classList.remove('play');
+  }, { threshold: [0, 0.55] }).observe(element);
+  replay(scene, frame, () => ready.then(() => delay(250)));
+  replay(steps, steps, () => delay(150));
 }
 
 function compareSlider() {
